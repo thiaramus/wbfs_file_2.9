@@ -21,11 +21,10 @@ ifeq ($(MSYSTEM),MINGW32)
 
 else ifeq ($(shell uname),Darwin)
 
-	COMMON += libwbfs_osx.o 
-	LIBS = -lcrypto -ldl -lm
-	ADD_CF = -arch i386 -arch ppc
-	ADD_LF = -arch i386 -arch ppc
-
+    COMMON += libwbfs_osx.o 
+    LIBS = -lcrypto -ldl -lm
+    ADD_CF = -arch arm64 -I/opt/homebrew/opt/openssl@3/include
+    ADD_LF = -arch arm64 -L/opt/homebrew/opt/openssl@3/lib
 else
 	COMMON += libwbfs_linux.o 
 	ADD_LF = -static
